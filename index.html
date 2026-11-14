@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -981,7 +982,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, updateDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'manifestation-sanctuary-app';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
@@ -995,6 +996,25 @@
 
         let db, auth, userId = null;
 
+        // Load local fallback cache on startup so screen doesn't flicker empty before cloud sync
+        try {
+            const cachedDiary = localStorage.getItem('manifest_diary');
+            if (cachedDiary) appData.diary = JSON.parse(cachedDiary);
+            const cachedWishes = localStorage.getItem('manifest_wishes');
+            if (cachedWishes) appData.wishes = JSON.parse(cachedWishes);
+            const cachedGrat = localStorage.getItem('manifest_grat');
+            if (cachedGrat) appData.gratitude = JSON.parse(cachedGrat);
+            const cachedChecks = localStorage.getItem('manifest_checks');
+            if (cachedChecks) appData.checks = JSON.parse(cachedChecks);
+
+            renderDiary();
+            renderWishes();
+            renderGratitude();
+            renderCheckHistory();
+        } catch (e) {
+            console.warn("Local cache load warning:", e);
+        }
+
         try {
             const app = initializeApp(firebaseConfig);
             db = getFirestore(app);
@@ -1007,26 +1027,31 @@
                     } else {
                         await signInAnonymously(auth);
                     }
-                    userId = auth.currentUser?.uid || crypto.randomUUID();
+                    userId = auth.currentUser?.uid || localStorage.getItem('manifest_persistent_uid') || crypto.randomUUID();
+                    localStorage.setItem('manifest_persistent_uid', userId);
                     console.log("Firebase authenticated. User ID:", userId);
                     initFirestoreListeners();
                 } catch (err) {
                     console.error("Auth error:", err);
-                    userId = crypto.randomUUID();
+                    userId = localStorage.getItem('manifest_persistent_uid') || crypto.randomUUID();
+                    localStorage.setItem('manifest_persistent_uid', userId);
                     initFirestoreListeners();
                 }
             };
             initAuth();
         } catch (e) {
-            console.warn("Firebase initialization skipped, falling back to local memory:", e);
+            console.warn("Firebase initialization skipped, using persistent local memory:", e);
+            userId = localStorage.getItem('manifest_persistent_uid') || crypto.randomUUID();
+            localStorage.setItem('manifest_persistent_uid', userId);
         }
 
         window.cloudAddDiary = async function(text, blessing) {
-            if (!db || !userId) {
-                appData.diary.unshift({ id: Date.now(), date: new Date().toLocaleString(), text, blessing });
-                window.renderDiary();
-                return;
-            }
+            const newItem = { id: 'local_' + Date.now(), date: new Date().toLocaleString(), text, blessing, createdAt: Date.now() };
+            appData.diary.unshift(newItem);
+            localStorage.setItem('manifest_diary', JSON.stringify(appData.diary));
+            renderDiary();
+
+            if (!db || !userId) return;
             try {
                 await addDoc(collection(db, 'artifacts', appId, 'users', userId, 'diary'), {
                     text,
@@ -1040,11 +1065,11 @@
         };
 
         window.cloudDeleteDiary = async function(docId) {
-            if (!db || !userId) {
-                appData.diary = appData.diary.filter(d => d.id !== docId);
-                window.renderDiary();
-                return;
-            }
+            appData.diary = appData.diary.filter(d => d.id !== docId);
+            localStorage.setItem('manifest_diary', JSON.stringify(appData.diary));
+            renderDiary();
+
+            if (!db || !userId || String(docId).startsWith('local_')) return;
             try {
                 await deleteDoc(doc(db, 'artifacts', appId, 'users', userId, 'diary', docId));
             } catch (e) {
@@ -1053,11 +1078,12 @@
         };
 
         window.cloudAddWish = async function(title, desc, category) {
-            if (!db || !userId) {
-                appData.wishes.unshift({ id: Date.now(), title, desc, category, achieved: false, date: new Date().toLocaleDateString() });
-                window.renderWishes();
-                return;
-            }
+            const newItem = { id: 'local_' + Date.now(), title, desc, category, achieved: false, date: new Date().toLocaleDateString(), createdAt: Date.now() };
+            appData.wishes.unshift(newItem);
+            localStorage.setItem('manifest_wishes', JSON.stringify(appData.wishes));
+            renderWishes();
+
+            if (!db || !userId) return;
             try {
                 await addDoc(collection(db, 'artifacts', appId, 'users', userId, 'wishes'), {
                     title,
@@ -1073,11 +1099,14 @@
         };
 
         window.cloudToggleWish = async function(docId, currentStatus) {
-            if (!db || !userId) {
-                const w = appData.wishes.find(item => item.id === docId);
-                if (w) { w.achieved = !w.achieved; window.renderWishes(); }
-                return;
+            const w = appData.wishes.find(item => item.id === docId);
+            if (w) { 
+                w.achieved = !currentStatus; 
+                localStorage.setItem('manifest_wishes', JSON.stringify(appData.wishes));
+                renderWishes(); 
             }
+
+            if (!db || !userId || String(docId).startsWith('local_')) return;
             try {
                 await updateDoc(doc(db, 'artifacts', appId, 'users', userId, 'wishes', docId), {
                     achieved: !currentStatus
@@ -1088,11 +1117,11 @@
         };
 
         window.cloudDeleteWish = async function(docId) {
-            if (!db || !userId) {
-                appData.wishes = appData.wishes.filter(w => w.id !== docId);
-                window.renderWishes();
-                return;
-            }
+            appData.wishes = appData.wishes.filter(w => w.id !== docId);
+            localStorage.setItem('manifest_wishes', JSON.stringify(appData.wishes));
+            renderWishes();
+
+            if (!db || !userId || String(docId).startsWith('local_')) return;
             try {
                 await deleteDoc(doc(db, 'artifacts', appId, 'users', userId, 'wishes', docId));
             } catch (e) {
@@ -1101,11 +1130,12 @@
         };
 
         window.cloudAddGratitude = async function(p1, p2, p3) {
-            if (!db || !userId) {
-                appData.gratitude.unshift({ id: Date.now(), p1, p2, p3, date: new Date().toLocaleDateString() });
-                window.renderGratitude();
-                return;
-            }
+            const newItem = { id: 'local_' + Date.now(), p1, p2, p3, date: new Date().toLocaleDateString(), createdAt: Date.now() };
+            appData.gratitude.unshift(newItem);
+            localStorage.setItem('manifest_grat', JSON.stringify(appData.gratitude));
+            renderGratitude();
+
+            if (!db || !userId) return;
             try {
                 await addDoc(collection(db, 'artifacts', appId, 'users', userId, 'gratitude'), {
                     p1, p2, p3,
@@ -1118,11 +1148,11 @@
         };
 
         window.cloudDeleteGratitude = async function(docId) {
-            if (!db || !userId) {
-                appData.gratitude = appData.gratitude.filter(g => g.id !== docId);
-                window.renderGratitude();
-                return;
-            }
+            appData.gratitude = appData.gratitude.filter(g => g.id !== docId);
+            localStorage.setItem('manifest_grat', JSON.stringify(appData.gratitude));
+            renderGratitude();
+
+            if (!db || !userId || String(docId).startsWith('local_')) return;
             try {
                 await deleteDoc(doc(db, 'artifacts', appId, 'users', userId, 'gratitude', docId));
             } catch (e) {
@@ -1131,11 +1161,12 @@
         };
 
         window.cloudAddCheck = async function(payee, amount, purpose) {
-            if (!db || !userId) {
-                appData.checks.unshift({ id: Date.now(), payee, amount, purpose, signature: "宇宙銀行", date: new Date().toLocaleDateString() });
-                window.renderCheckHistory();
-                return;
-            }
+            const newItem = { id: 'local_' + Date.now(), payee, amount, purpose, signature: "宇宙銀行", date: new Date().toLocaleDateString(), createdAt: Date.now() };
+            appData.checks.unshift(newItem);
+            localStorage.setItem('manifest_checks', JSON.stringify(appData.checks));
+            renderCheckHistory();
+
+            if (!db || !userId) return;
             try {
                 await addDoc(collection(db, 'artifacts', appId, 'users', userId, 'checks'), {
                     payee,
@@ -1154,10 +1185,11 @@
             if (!db || !userId) return;
 
             onSnapshot(collection(db, 'artifacts', appId, 'users', userId, 'diary'), (snapshot) => {
-                appData.diary = [];
+                if (snapshot.empty && appData.diary.length > 0) return;
+                const cloudItems = [];
                 snapshot.forEach((docSnap) => {
                     const data = docSnap.data();
-                    appData.diary.push({
+                    cloudItems.push({
                         id: docSnap.id,
                         text: data.text,
                         blessing: data.blessing,
@@ -1165,15 +1197,20 @@
                         createdAt: data.createdAt || Date.now()
                     });
                 });
-                appData.diary.sort((a, b) => b.createdAt - a.createdAt);
-                window.renderDiary();
+                if (cloudItems.length > 0) {
+                    cloudItems.sort((a, b) => b.createdAt - a.createdAt);
+                    appData.diary = cloudItems;
+                    localStorage.setItem('manifest_diary', JSON.stringify(appData.diary));
+                    window.renderDiary();
+                }
             }, (err) => console.error("Diary sync error:", err));
 
             onSnapshot(collection(db, 'artifacts', appId, 'users', userId, 'wishes'), (snapshot) => {
-                appData.wishes = [];
+                if (snapshot.empty && appData.wishes.length > 0) return;
+                const cloudItems = [];
                 snapshot.forEach((docSnap) => {
                     const data = docSnap.data();
-                    appData.wishes.push({
+                    cloudItems.push({
                         id: docSnap.id,
                         title: data.title,
                         desc: data.desc,
@@ -1183,15 +1220,20 @@
                         createdAt: data.createdAt || Date.now()
                     });
                 });
-                appData.wishes.sort((a, b) => b.createdAt - a.createdAt);
-                window.renderWishes();
+                if (cloudItems.length > 0) {
+                    cloudItems.sort((a, b) => b.createdAt - a.createdAt);
+                    appData.wishes = cloudItems;
+                    localStorage.setItem('manifest_wishes', JSON.stringify(appData.wishes));
+                    window.renderWishes();
+                }
             }, (err) => console.error("Wishes sync error:", err));
 
             onSnapshot(collection(db, 'artifacts', appId, 'users', userId, 'gratitude'), (snapshot) => {
-                appData.gratitude = [];
+                if (snapshot.empty && appData.gratitude.length > 0) return;
+                const cloudItems = [];
                 snapshot.forEach((docSnap) => {
                     const data = docSnap.data();
-                    appData.gratitude.push({
+                    cloudItems.push({
                         id: docSnap.id,
                         p1: data.p1,
                         p2: data.p2,
@@ -1200,15 +1242,20 @@
                         createdAt: data.createdAt || Date.now()
                     });
                 });
-                appData.gratitude.sort((a, b) => b.createdAt - a.createdAt);
-                window.renderGratitude();
+                if (cloudItems.length > 0) {
+                    cloudItems.sort((a, b) => b.createdAt - a.createdAt);
+                    appData.gratitude = cloudItems;
+                    localStorage.setItem('manifest_grat', JSON.stringify(appData.gratitude));
+                    window.renderGratitude();
+                }
             }, (err) => console.error("Gratitude sync error:", err));
 
             onSnapshot(collection(db, 'artifacts', appId, 'users', userId, 'checks'), (snapshot) => {
-                appData.checks = [];
+                if (snapshot.empty && appData.checks.length > 0) return;
+                const cloudItems = [];
                 snapshot.forEach((docSnap) => {
                     const data = docSnap.data();
-                    appData.checks.push({
+                    cloudItems.push({
                         id: docSnap.id,
                         payee: data.payee,
                         amount: data.amount,
@@ -1218,10 +1265,15 @@
                         createdAt: data.createdAt || Date.now()
                     });
                 });
-                appData.checks.sort((a, b) => b.createdAt - a.createdAt);
-                window.renderCheckHistory();
+                if (cloudItems.length > 0) {
+                    cloudItems.sort((a, b) => b.createdAt - a.createdAt);
+                    appData.checks = cloudItems;
+                    localStorage.setItem('manifest_checks', JSON.stringify(appData.checks));
+                    window.renderCheckHistory();
+                }
             }, (err) => console.error("Checks sync error:", err));
         }
     </script>
 </body>
 </html>
+```
