@@ -13,7 +13,7 @@
             font-family: 'Inter', 'Noto Serif TC', serif;
             background-color: #f7f3ec;
             color: #2c241d;
-            font-size: 1.05rem; /* Increased base font size */
+            font-size: 1.05rem;
         }
         .paper-sheet {
             background-color: #fcfaf5;
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <!-- Navigation Menu Links (Fully responsive for mobile & desktop) -->
+            <!-- Navigation Menu Links -->
             <nav class="flex items-center justify-center flex-wrap gap-2 sm:gap-4 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
                 <button onclick="switchTab('tab-home')" class="px-3 sm:px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm sm:text-base font-bold rounded-xl transition flex items-center gap-1.5 shadow-2xs shrink-0">
                     <span>🏠</span> 主頁
@@ -87,33 +87,19 @@
 
         <!-- TAB 1: HOME DASHBOARD -->
         <section id="tab-home" class="tab-content max-w-5xl mx-auto space-y-8">
-            <!-- Hero Welcome Card -->
-            <div class="paper-sheet rounded-3xl p-8 sm:p-14 border border-stone-300 text-center relative overflow-hidden shadow-sm">
+            <div class="paper-sheet rounded-3xl p-6 sm:p-14 border border-stone-300 text-center relative overflow-hidden shadow-sm">
                 <div class="absolute -top-10 -right-10 w-40 h-40 bg-amber-200/40 rounded-full blur-2xl pointer-events-none"></div>
                 <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-pink-200/40 rounded-full blur-2xl pointer-events-none"></div>
 
-                <span class="text-6xl sm:text-7xl mb-4 inline-block animate-pulse">🌌</span>
-                <h2 class="text-3xl sm:text-5xl font-black text-stone-900 font-serif tracking-tight mb-4">
+                <span class="text-5xl sm:text-7xl mb-3 sm:mb-4 inline-block animate-pulse">🌌</span>
+                <h2 class="text-2xl sm:text-5xl font-black text-stone-900 font-serif tracking-tight mb-3 sm:mb-4">
                     歡迎來到你的高頻顯化基地
                 </h2>
-                <p class="text-stone-700 text-lg sm:text-2xl max-w-2xl mx-auto leading-relaxed font-medium">
+                <p class="text-stone-700 text-base sm:text-2xl max-w-2xl mx-auto leading-relaxed font-medium px-2">
                     在這裡，你擁有創造現實的絕對力量。寫下豐盛支票、釋放負能量、灌溉願望種子，與宇宙頻率同頻共振。
                 </p>
-
-                <div class="mt-8 flex flex-wrap justify-center gap-4">
-                    <button onclick="switchTab('tab-check')" class="sketchy-btn px-7 py-4 bg-amber-400 hover:bg-amber-500 text-stone-900 font-bold text-lg sm:text-xl flex items-center gap-2">
-                        <span>💳</span> 開立宇宙支票
-                    </button>
-                    <button onclick="switchTab('tab-burner')" class="sketchy-btn px-7 py-4 bg-orange-400 hover:bg-orange-500 text-white font-bold text-lg sm:text-xl flex items-center gap-2">
-                        <span>🔥</span> 釋放負面情緒
-                    </button>
-                    <button onclick="switchTab('tab-wishes')" class="sketchy-btn px-7 py-4 bg-pink-400 hover:bg-pink-500 text-white font-bold text-lg sm:text-xl flex items-center gap-2">
-                        <span>🌟</span> 瀏覽願望牆
-                    </button>
-                </div>
             </div>
 
-            <!-- Quick Access Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div onclick="switchTab('tab-check')" class="sketchy-box bg-white p-7 sm:p-9 cursor-pointer hover:bg-amber-50/50 transition flex flex-col justify-between">
                     <div>
@@ -165,7 +151,6 @@
         <!-- TAB 2: MANIFESTATION CHECK -->
         <section id="tab-check" class="tab-content hidden max-w-4xl mx-auto space-y-6">
             <div class="paper-sheet rounded-3xl p-6 sm:p-10 border border-stone-300 shadow-sm">
-                <!-- Header with Back Button -->
                 <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
                     <div>
                         <h2 class="text-2xl sm:text-3xl font-black text-stone-900 font-serif flex items-center gap-2">
@@ -175,14 +160,13 @@
                             親手開立您的無限支票，簽名人固定為宇宙銀行，蓋上官方防偽與訂單成立印章！
                         </p>
                     </div>
-                    <button onclick="switchTab('tab-home')" class="sketchy-btn px-4 py-2.5 bg-white hover:bg-stone-50 text-stone-800 text-base font-bold transition flex items-center gap-1">
+                    <button type="button" onclick="switchTab('tab-home')" class="sketchy-btn px-4 py-2.5 bg-white hover:bg-stone-50 text-stone-800 text-base font-bold transition flex items-center gap-1 cursor-pointer">
                         <span>🏠</span> 返回主頁
                     </button>
                 </div>
 
-                <!-- Check preview card (Widescreen 2.3:1 ratio matching real check, fully responsive on mobile) -->
+                <!-- Check preview card -->
                 <div id="universe-check-card" class="relative w-full aspect-[2.3/1] max-w-3xl mx-auto rounded-2xl shadow-xl p-3 sm:p-8 text-stone-800 overflow-hidden border border-amber-400/80" style="background: linear-gradient(135deg, #fcfaf5 0%, #f6f0e2 40%, #eddcc2 75%, #e3ceab 100%);">
-                    <!-- Subtle golden shimmer dots -->
                     <div class="absolute inset-0 pointer-events-none opacity-40 overflow-hidden">
                         <div class="absolute top-4 left-10 w-2 h-2 bg-amber-400 rounded-full animate-ping"></div>
                         <div class="absolute top-12 right-20 w-1.5 h-1.5 bg-amber-500 rounded-full"></div>
@@ -190,7 +174,6 @@
                         <div class="absolute top-1/2 right-12 w-2 h-2 bg-amber-300 rounded-full"></div>
                     </div>
 
-                    <!-- Top Row -->
                     <div class="flex justify-between items-start mb-2 sm:mb-6">
                         <div>
                             <h3 class="text-sm sm:text-3xl font-black text-stone-900 tracking-wider font-serif">宇宙無限銀行</h3>
@@ -202,7 +185,6 @@
                         </div>
                     </div>
 
-                    <!-- Middle Row: Payee, Purpose, Vertical Stamp & Amount -->
                     <div class="grid grid-cols-12 gap-1.5 sm:gap-4 items-center my-2 sm:my-6 relative">
                         <div class="col-span-7 space-y-2 sm:space-y-4">
                             <div class="flex items-baseline gap-1.5 sm:gap-3">
@@ -235,14 +217,12 @@
                         </div>
                     </div>
 
-                    <!-- Bottom Row: Issuer, Signature & Official Seal -->
                     <div class="flex justify-between items-end mt-3 sm:mt-8 pt-2 sm:pt-4 border-t border-stone-400/60 relative">
                         <div class="text-[9px] sm:text-sm text-stone-700 space-y-0.5 font-medium">
                             <div>發票人：宇宙無限銀行</div>
                             <div>帳號：無限富足 8888-8888</div>
                         </div>
 
-                        <!-- Official Seal Stamp -->
                         <div class="absolute right-12 bottom-1 sm:bottom-4 pointer-events-none opacity-90 transform rotate-[-8deg] scale-75 sm:scale-100">
                             <div class="w-16 h-16 sm:w-22 sm:h-22 rounded-full border-2 border-red-600 flex flex-col items-center justify-center p-1 bg-red-50/10 shadow-sm">
                                 <span class="text-[10px] sm:text-xs font-black text-red-600 tracking-wider">宇宙銀行</span>
@@ -276,22 +256,20 @@
                     </div>
                 </div>
 
-                <!-- Locked Signature Info & Action Buttons -->
                 <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div class="text-sm sm:text-base text-stone-600 font-medium">
                         🔒 簽名人已固定為 <strong class="text-stone-900">「宇宙銀行」</strong>，開立即蓋上官方訂單成立鋼印。
                     </div>
                     <div class="flex items-center gap-3 w-full sm:w-auto">
-                        <button onclick="saveUniverseCheck()" class="sketchy-btn flex-1 sm:flex-none px-7 py-3.5 bg-amber-400 hover:bg-amber-500 text-stone-900 font-bold text-base transition flex items-center justify-center gap-2">
+                        <button type="button" onclick="saveUniverseCheck()" class="sketchy-btn flex-1 sm:flex-none px-7 py-3.5 bg-amber-400 hover:bg-amber-500 text-stone-900 font-bold text-base transition flex items-center justify-center gap-2 cursor-pointer">
                             <span>✨</span> 開立並蓋章
                         </button>
-                        <button onclick="downloadUniverseCheck()" class="sketchy-btn flex-1 sm:flex-none px-7 py-3.5 bg-stone-900 hover:bg-stone-800 text-white font-bold text-base transition flex items-center justify-center gap-2">
+                        <button type="button" onclick="downloadUniverseCheck()" class="sketchy-btn flex-1 sm:flex-none px-7 py-3.5 bg-stone-900 hover:bg-stone-800 text-white font-bold text-base transition flex items-center justify-center gap-2 cursor-pointer">
                             <span>📥</span> 下載支票圖檔
                         </button>
                     </div>
                 </div>
 
-                <!-- Check History Section -->
                 <div class="mt-10 pt-6 border-t border-stone-200">
                     <h3 class="text-xl font-bold text-stone-800 mb-5 font-serif">📜 我的豐盛支票開立紀錄</h3>
                     <div id="check-history-list" class="space-y-4">
@@ -313,7 +291,7 @@
                             寫下所有讓你感到焦慮、不安或沈重的情緒，點火化為灰燼，宇宙將把其轉化為閃耀金光。
                         </p>
                     </div>
-                    <button onclick="switchTab('tab-home')" class="sketchy-btn px-4 py-2.5 bg-white hover:bg-stone-50 text-stone-800 text-base font-bold transition flex items-center gap-1">
+                    <button type="button" onclick="switchTab('tab-home')" class="sketchy-btn px-4 py-2.5 bg-white hover:bg-stone-50 text-stone-800 text-base font-bold transition flex items-center gap-1 cursor-pointer">
                         <span>🏠</span> 返回主頁
                     </button>
                 </div>
@@ -321,7 +299,7 @@
                 <div class="space-y-4">
                     <textarea id="diary-input" rows="5" placeholder="在此誠實寫下你內心的沉重、焦慮或委屈..." class="w-full p-5 rounded-2xl border-2 border-stone-300 focus:border-orange-500 focus:outline-none bg-white text-stone-800 text-base font-medium leading-relaxed"></textarea>
                     <div class="flex justify-end">
-                        <button onclick="burnEmotion()" class="sketchy-btn px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg flex items-center gap-2 shadow-sm">
+                        <button type="button" onclick="burnEmotion()" class="sketchy-btn px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg flex items-center gap-2 shadow-sm cursor-pointer">
                             <span>🔥</span> 點火化為灰燼
                         </button>
                     </div>
@@ -350,12 +328,11 @@
                             設立你的夢想清單，標記顯化狀態，讓宇宙頻率全速為你實現。
                         </p>
                     </div>
-                    <button onclick="switchTab('tab-home')" class="sketchy-btn px-4 py-2.5 bg-white hover:bg-stone-50 text-stone-800 text-base font-bold transition flex items-center gap-1">
+                    <button type="button" onclick="switchTab('tab-home')" class="sketchy-btn px-4 py-2.5 bg-white hover:bg-stone-50 text-stone-800 text-base font-bold transition flex items-center gap-1 cursor-pointer">
                         <span>🏠</span> 返回主頁
                     </button>
                 </div>
 
-                <!-- Add Wish Form Card -->
                 <div class="bg-white p-7 rounded-2xl border-2 border-stone-300 shadow-xs mb-8 space-y-5">
                     <h3 class="text-xl font-bold text-stone-900 font-serif">✨ 新增一個顯化願望</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -379,13 +356,12 @@
                         <textarea id="wish-desc-input" rows="2" placeholder="詳細描述當願望實現時你的感受、周遭環境與喜悅..." class="w-full px-4 py-3.5 rounded-xl border-2 border-stone-300 focus:border-pink-500 focus:outline-none bg-white text-stone-800 text-base font-medium"></textarea>
                     </div>
                     <div class="flex justify-end">
-                        <button onclick="addWishFromModal()" class="sketchy-btn px-7 py-3.5 bg-pink-500 hover:bg-pink-600 text-white font-bold text-lg flex items-center gap-2 shadow-sm">
+                        <button type="button" onclick="addWishFromModal()" class="sketchy-btn px-7 py-3.5 bg-pink-500 hover:bg-pink-600 text-white font-bold text-lg flex items-center gap-2 shadow-sm cursor-pointer">
                             <span>✨</span> 發布至宇宙願望牆
                         </button>
                     </div>
                 </div>
 
-                <!-- Wishes Grid -->
                 <div id="wishes-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Rendered dynamically -->
                 </div>
@@ -404,7 +380,7 @@
                             「感恩是接收宇宙豐盛最高頻率的密碼。」每天寫下三件值得感謝的事。
                         </p>
                     </div>
-                    <button onclick="switchTab('tab-home')" class="sketchy-btn px-4 py-2.5 bg-white hover:bg-stone-50 text-stone-800 text-base font-bold transition flex items-center gap-1">
+                    <button type="button" onclick="switchTab('tab-home')" class="sketchy-btn px-4 py-2.5 bg-white hover:bg-stone-50 text-stone-800 text-base font-bold transition flex items-center gap-1 cursor-pointer">
                         <span>🏠</span> 返回主頁
                     </button>
                 </div>
@@ -424,7 +400,7 @@
                         <input type="text" id="grat-3" placeholder="例如：感謝身體健康充滿活力" class="w-full px-4 py-3 rounded-xl border-2 border-stone-300 focus:border-emerald-500 focus:outline-none text-stone-800 text-base font-medium">
                     </div>
                     <div class="flex justify-end pt-3">
-                        <button onclick="saveGratitude()" class="sketchy-btn px-7 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base flex items-center gap-2 shadow-sm">
+                        <button type="button" onclick="saveGratitude()" class="sketchy-btn px-7 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base flex items-center gap-2 shadow-sm cursor-pointer">
                             <span>🙏</span> 發送感恩頻率
                         </button>
                     </div>
@@ -448,12 +424,11 @@
                             跟隨圓圈的放大縮小與秒數倒數，進行 3 分鐘的高頻呼吸調頻。
                         </p>
                     </div>
-                    <button onclick="switchTab('tab-home')" class="sketchy-btn px-4 py-2.5 bg-white hover:bg-stone-50 text-stone-800 text-base font-bold transition flex items-center gap-1 shrink-0">
+                    <button type="button" onclick="switchTab('tab-home')" class="sketchy-btn px-4 py-2.5 bg-white hover:bg-stone-50 text-stone-800 text-base font-bold transition flex items-center gap-1 shrink-0 cursor-pointer">
                         <span>🏠</span> 返回主頁
                     </button>
                 </div>
 
-                <!-- Session Timer Display -->
                 <div class="flex justify-center mb-3">
                     <div id="breath-timer-display" class="text-sm sm:text-base font-bold text-indigo-900 bg-indigo-100 px-5 py-2 rounded-full border border-indigo-300 hidden shadow-2xs">
                         ⏳ 3分鐘調頻剩餘時間：<span id="breath-countdown" class="font-black text-indigo-700">03:00</span>
@@ -461,7 +436,6 @@
                 </div>
 
                 <div class="py-4 sm:py-6 flex flex-col items-center justify-center relative min-h-[340px] sm:min-h-[400px]">
-                    <!-- Animated Breathing Circle with ample interior spacing and flexbox centering -->
                     <div id="breath-circle" class="w-56 h-56 sm:w-80 sm:h-80 rounded-full border-4 border-indigo-500 bg-indigo-50/50 flex flex-col items-center justify-center p-4 sm:p-8 shadow-lg transition-all duration-1000 ease-in-out text-center relative z-10">
                         <span id="breath-text" class="text-lg sm:text-3xl font-black text-indigo-900 font-serif leading-snug">點擊開始調頻</span>
                         <span id="breath-sec" class="text-3xl sm:text-6xl font-black text-indigo-700 font-serif mt-2 sm:mt-3"></span>
@@ -469,10 +443,10 @@
                 </div>
 
                 <div class="flex justify-center gap-4 mt-4">
-                    <button onclick="startBreathing()" id="breath-start-btn" class="sketchy-btn px-7 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base sm:text-lg shadow-sm">
+                    <button type="button" onclick="startBreathing()" id="breath-start-btn" class="sketchy-btn px-7 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base sm:text-lg shadow-sm cursor-pointer">
                         🌿 開始 3 分鐘調頻
                     </button>
-                    <button onclick="stopBreathing()" class="sketchy-btn px-7 py-3.5 bg-stone-200 hover:bg-stone-300 text-stone-800 font-bold text-base sm:text-lg shadow-sm">
+                    <button type="button" onclick="stopBreathing()" class="sketchy-btn px-7 py-3.5 bg-stone-200 hover:bg-stone-300 text-stone-800 font-bold text-base sm:text-lg shadow-sm cursor-pointer">
                         ⏹ 停止
                     </button>
                 </div>
@@ -486,265 +460,14 @@
         ✨ 顯化宇宙・自我心靈小天地 © 2026 | 您的每一個意念，都在創造您的實相。
     </footer>
 
-    <!-- Firebase SDKs -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    <!-- Toast Modal Notification -->
+    <div id="toast-modal" class="fixed bottom-6 right-6 z-50 bg-stone-900 text-white px-6 py-3.5 rounded-2xl shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 font-medium text-base pointer-events-none">
+        <span id="toast-icon">✨</span>
+        <span id="toast-msg">提示訊息</span>
+    </div>
 
-        // Initialize Firebase with global variables provided by environment
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'manifestation-sanctuary-app';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-            apiKey: "",
-            authDomain: "",
-            projectId: "",
-            storageBucket: "",
-            messagingSenderId: "",
-            appId: ""
-        };
-
-        let db, auth, userId = null;
-
-        try {
-            const app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            auth = getAuth(app);
-
-            // Authentication Handler
-            const initAuth = async () => {
-                try {
-                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                        await signInWithCustomToken(auth, __initial_auth_token);
-                    } else {
-                        await signInAnonymously(auth);
-                    }
-                    userId = auth.currentUser?.uid || crypto.randomUUID();
-                    console.log("Firebase authenticated. User ID:", userId);
-                    
-                    // Initialize Real-time Listeners after Auth
-                    initFirestoreListeners();
-                } catch (err) {
-                    console.error("Auth error:", err);
-                    userId = crypto.randomUUID();
-                    initFirestoreListeners();
-                }
-            };
-            initAuth();
-        } catch (e) {
-            console.warn("Firebase initialization skipped, falling back to local memory:", e);
-        }
-
-        // Global functions exposed to window for Firestore operations
-        window.cloudAddDiary = async function(text, blessing) {
-            if (!db || !userId) {
-                // Fallback to local memory if offline
-                appData.diary.unshift({ id: Date.now(), date: new Date().toLocaleString(), text, blessing });
-                renderDiary();
-                return;
-            }
-            try {
-                await addDoc(collection(db, 'artifacts', appId, 'users', userId, 'diary'), {
-                    text,
-                    blessing,
-                    createdAt: Date.now(),
-                    dateStr: new Date().toLocaleString()
-                });
-            } catch (e) {
-                console.error("Error adding diary to cloud:", e);
-            }
-        };
-
-        window.cloudDeleteDiary = async function(docId) {
-            if (!db || !userId) {
-                appData.diary = appData.diary.filter(d => d.id !== docId);
-                renderDiary();
-                return;
-            }
-            try {
-                await deleteDoc(doc(db, 'artifacts', appId, 'users', userId, 'diary', docId));
-            } catch (e) {
-                console.error("Error deleting diary:", e);
-            }
-        };
-
-        window.cloudAddWish = async function(title, desc, category) {
-            if (!db || !userId) {
-                appData.wishes.unshift({ id: Date.now(), title, desc, category, achieved: false, date: new Date().toLocaleDateString() });
-                renderWishes();
-                return;
-            }
-            try {
-                await addDoc(collection(db, 'artifacts', appId, 'users', userId, 'wishes'), {
-                    title,
-                    desc,
-                    category,
-                    achieved: false,
-                    createdAt: Date.now(),
-                    dateStr: new Date().toLocaleDateString()
-                });
-            } catch (e) {
-                console.error("Error adding wish:", e);
-            }
-        };
-
-        window.cloudToggleWish = async function(docId, currentStatus) {
-            if (!db || !userId) {
-                const w = appData.wishes.find(item => item.id === docId);
-                if (w) { w.achieved = !w.achieved; renderWishes(); }
-                return;
-            }
-            try {
-                await updateDoc(doc(db, 'artifacts', appId, 'users', userId, 'wishes', docId), {
-                    achieved: !currentStatus
-                });
-            } catch (e) {
-                console.error("Error toggling wish:", e);
-            }
-        };
-
-        window.cloudDeleteWish = async function(docId) {
-            if (!db || !userId) {
-                appData.wishes = appData.wishes.filter(w => w.id !== docId);
-                renderWishes();
-                return;
-            }
-            try {
-                await deleteDoc(doc(db, 'artifacts', appId, 'users', userId, 'wishes', docId));
-            } catch (e) {
-                console.error("Error deleting wish:", e);
-            }
-        };
-
-        window.cloudAddGratitude = async function(p1, p2, p3) {
-            if (!db || !userId) {
-                appData.gratitude.unshift({ id: Date.now(), p1, p2, p3, date: new Date().toLocaleDateString() });
-                renderGratitude();
-                return;
-            }
-            try {
-                await addDoc(collection(db, 'artifacts', appId, 'users', userId, 'gratitude'), {
-                    p1, p2, p3,
-                    createdAt: Date.now(),
-                    dateStr: new Date().toLocaleDateString()
-                });
-            } catch (e) {
-                console.error("Error adding gratitude:", e);
-            }
-        };
-
-        window.cloudDeleteGratitude = async function(docId) {
-            if (!db || !userId) {
-                appData.gratitude = appData.gratitude.filter(g => g.id !== docId);
-                renderGratitude();
-                return;
-            }
-            try {
-                await deleteDoc(doc(db, 'artifacts', appId, 'users', userId, 'gratitude', docId));
-            } catch (e) {
-                console.error("Error deleting gratitude:", e);
-            }
-        };
-
-        window.cloudAddCheck = async function(payee, amount, purpose) {
-            if (!db || !userId) {
-                appData.checks.unshift({ id: Date.now(), payee, amount, purpose, signature: "宇宙銀行", date: new Date().toLocaleDateString() });
-                renderCheckHistory();
-                return;
-            }
-            try {
-                await addDoc(collection(db, 'artifacts', appId, 'users', userId, 'checks'), {
-                    payee,
-                    amount,
-                    purpose,
-                    signature: "宇宙銀行",
-                    createdAt: Date.now(),
-                    dateStr: new Date().toLocaleDateString()
-                });
-            } catch (e) {
-                console.error("Error adding check:", e);
-            }
-        };
-
-        function initFirestoreListeners() {
-            if (!db || !userId) return;
-
-            // 1. Diary listener
-            onSnapshot(collection(db, 'artifacts', appId, 'users', userId, 'diary'), (snapshot) => {
-                appData.diary = [];
-                snapshot.forEach((docSnap) => {
-                    const data = docSnap.data();
-                    appData.diary.push({
-                        id: docSnap.id,
-                        text: data.text,
-                        blessing: data.blessing,
-                        date: data.dateStr || new Date(data.createdAt).toLocaleString()
-                    });
-                });
-                appData.diary.sort((a, b) => b.createdAt - a.createdAt);
-                renderDiary();
-            }, (err) => console.error("Diary sync error:", err));
-
-            // 2. Wishes listener
-            onSnapshot(collection(db, 'artifacts', appId, 'users', userId, 'wishes'), (snapshot) => {
-                appData.wishes = [];
-                snapshot.forEach((docSnap) => {
-                    const data = docSnap.data();
-                    appData.wishes.push({
-                        id: docSnap.id,
-                        title: data.title,
-                        desc: data.desc,
-                        category: data.category,
-                        achieved: data.achieved,
-                        date: data.dateStr || new Date(data.createdAt).toLocaleDateString(),
-                        createdAt: data.createdAt
-                    });
-                });
-                appData.wishes.sort((a, b) => b.createdAt - a.createdAt);
-                renderWishes();
-            }, (err) => console.error("Wishes sync error:", err));
-
-            // 3. Gratitude listener
-            onSnapshot(collection(db, 'artifacts', appId, 'users', userId, 'gratitude'), (snapshot) => {
-                appData.gratitude = [];
-                snapshot.forEach((docSnap) => {
-                    const data = docSnap.data();
-                    appData.gratitude.push({
-                        id: docSnap.id,
-                        p1: data.p1,
-                        p2: data.p2,
-                        p3: data.p3,
-                        date: data.dateStr || new Date(data.createdAt).toLocaleDateString(),
-                        createdAt: data.createdAt
-                    });
-                });
-                appData.gratitude.sort((a, b) => b.createdAt - a.createdAt);
-                renderGratitude();
-            }, (err) => console.error("Gratitude sync error:", err));
-
-            // 4. Checks listener
-            onSnapshot(collection(db, 'artifacts', appId, 'users', userId, 'checks'), (snapshot) => {
-                appData.checks = [];
-                snapshot.forEach((docSnap) => {
-                    const data = docSnap.data();
-                    appData.checks.push({
-                        id: docSnap.id,
-                        payee: data.payee,
-                        amount: data.amount,
-                        purpose: data.purpose,
-                        signature: data.signature || "宇宙銀行",
-                        date: data.dateStr || new Date(data.createdAt).toLocaleDateString(),
-                        createdAt: data.createdAt
-                    });
-                });
-                appData.checks.sort((a, b) => b.createdAt - a.createdAt);
-                renderCheckHistory();
-            }, (err) => console.error("Checks sync error:", err));
-        }
-    </script>
-
-    <!-- JavaScript Application Logic -->
+    <!-- Global Functions Definition Script (Loaded First) -->
     <script>
-        // Data storage and management object
         let appData = {
             diary: [],
             wishes: [],
@@ -752,27 +475,34 @@
             checks: []
         };
 
-        // Initialize App on DOM Load
-        document.addEventListener('DOMContentLoaded', () => {
-            renderDiary();
-            renderWishes();
-            renderGratitude();
-            renderCheckHistory();
-            updateCheckPreview();
-        });
-
-        // Tab Navigation
-        function switchTab(tabId) {
+        window.switchTab = function(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             const target = document.getElementById(tabId);
             if (target) {
                 target.classList.remove('hidden');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-        }
+        };
 
-        // Check functions
-        function formatCheckAmount(input) {
+        window.showToast = function(msg) {
+            const toast = document.getElementById('toast-modal');
+            const msgEl = document.getElementById('toast-msg');
+            if (!toast || !msgEl) return;
+            msgEl.innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        };
+
+        window.escapeHtml = function(str) {
+            if (!str) return '';
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        };
+
+        window.formatCheckAmount = function(input) {
             let val = input.value.replace(/,/g, '').replace(/[^\d]/g, '');
             if (val) {
                 input.value = Number(val).toLocaleString();
@@ -783,9 +513,9 @@
             if (amtDisplay) {
                 amtDisplay.innerText = input.value ? `${input.value}` : '0';
             }
-        }
+        };
 
-        function updateCheckPreview() {
+        window.updateCheckPreview = function() {
             const payeeInput = document.getElementById('check-payee');
             const purposeInput = document.getElementById('check-purpose');
 
@@ -797,15 +527,15 @@
 
             if(pEl) pEl.innerText = payee;
             if(purEl) purEl.innerText = purpose;
-        }
+        };
 
-        function saveUniverseCheck() {
+        window.saveUniverseCheck = function() {
             const payee = document.getElementById('check-payee')?.value || "郝有錢";
             const amount = document.getElementById('check-amount')?.value || "0";
             const purpose = document.getElementById('check-purpose')?.value || "財務自由";
 
             if (!amount || amount === "0") {
-                showToast("請填寫顯化金額！");
+                window.showToast("請填寫顯化金額！");
                 return;
             }
 
@@ -813,14 +543,13 @@
                 window.cloudAddCheck(payee, amount, purpose);
             } else {
                 appData.checks.unshift({ id: Date.now(), payee, amount, purpose, signature: "宇宙銀行", date: new Date().toLocaleDateString() });
-                renderCheckHistory();
+                window.renderCheckHistory();
             }
 
-            showToast("✨ 宇宙支票已同步至雲端並蓋上宇宙銀行印章！訂單成立！");
-            triggerConfetti();
-        }
+            window.showToast("✨ 宇宙支票已開立並蓋上宇宙銀行印章！訂單成立！");
+        };
 
-        function renderCheckHistory() {
+        window.renderCheckHistory = function() {
             const container = document.getElementById('check-history-list');
             if (!container) return;
             if (appData.checks.length === 0) {
@@ -831,7 +560,7 @@
                 <div class="bg-amber-50/70 border-2 border-amber-200/80 rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shadow-2xs">
                     <div>
                         <div class="flex items-center gap-2">
-                            <span class="text-xs px-2 py-0.5 bg-amber-200 text-amber-900 rounded font-bold">已雲端同步・訂單成立</span>
+                            <span class="text-xs px-2 py-0.5 bg-amber-200 text-amber-900 rounded font-bold">已開立・訂單成立</span>
                             <span class="text-xs text-stone-500 font-medium">${c.date}</span>
                         </div>
                         <div class="text-base font-bold text-stone-900 mt-1 font-serif">受款人：${c.payee}</div>
@@ -843,9 +572,9 @@
                     </div>
                 </div>
             `).join('');
-        }
+        };
 
-        function downloadUniverseCheck() {
+        window.downloadUniverseCheck = function() {
             const canvas = document.createElement('canvas');
             canvas.width = 1000;
             canvas.height = 430;
@@ -998,11 +727,49 @@
             link.download = `宇宙豐盛支票_${payeeVal}_${amountVal}.png`;
             link.href = canvas.toDataURL('image/png');
             link.click();
-            showToast("📥 宇宙支票圖檔已成功下載！");
-        }
+            window.showToast("📥 宇宙支票圖檔已成功下載！");
+        };
 
-        // Diary functions
-        function renderDiary() {
+        window.burnEmotion = function() {
+            const input = document.getElementById('diary-input');
+            const text = input ? input.value.trim() : '';
+            if (!text) {
+                window.showToast('請先寫下你想釋放的心情或焦慮...');
+                return;
+            }
+
+            const blessings = [
+                "宇宙已完全接收你的釋放，舊能量已化為純淨金光，為你迎來全新豐盛！",
+                "感謝這段經歷帶給你的覺察。放下沉重，你的心靈已重獲輕盈與自由。",
+                "火焰燃盡了罣礙，宇宙正在為你調頻，吸引最美好的奇蹟降臨。",
+                "你已經做得很好。允許自己重新出發，豐盛與喜悅正在靠近。"
+            ];
+            const blessing = blessings[Math.floor(Math.random() * blessings.length)];
+
+            const effectBox = document.getElementById('burner-effect-box');
+            if (effectBox) {
+                effectBox.innerHTML = `
+                    <div class="p-6 bg-orange-50 border-2 border-orange-300 rounded-2xl text-center animate-pulse">
+                        <span class="text-4xl inline-block animate-bounce">🔥</span>
+                        <h4 class="text-lg font-bold text-orange-900 mt-2">情緒正在燃燒與轉化中...</h4>
+                        <p class="text-sm text-orange-700 mt-1">「${window.escapeHtml(text)}」已化為宇宙繁星！</p>
+                    </div>
+                `;
+                setTimeout(() => { effectBox.innerHTML = ''; }, 4000);
+            }
+
+            if (typeof window.cloudAddDiary === 'function') {
+                window.cloudAddDiary(text, blessing);
+            } else {
+                appData.diary.unshift({ id: Date.now(), date: new Date().toLocaleString(), text, blessing });
+                window.renderDiary();
+            }
+
+            if (input) input.value = '';
+            window.showToast("🔥 情緒已成功釋放並轉化！");
+        };
+
+        window.renderDiary = function() {
             const list = document.getElementById('diary-list');
             if (!list) return;
             if (appData.diary.length === 0) {
@@ -1013,16 +780,41 @@
                 <div class="p-5 bg-stone-50 border-2 border-stone-200 rounded-2xl shadow-2xs relative">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-xs text-stone-400 font-semibold">${item.date}</span>
-                        <button onclick="cloudDeleteDiary('${item.id}')" class="text-stone-400 hover:text-red-500 text-sm transition font-bold">刪除</button>
+                        <button type="button" onclick="cloudDeleteDiary('${item.id}')" class="text-stone-400 hover:text-red-500 text-sm transition font-bold cursor-pointer">刪除</button>
                     </div>
-                    <p class="text-stone-800 text-base whitespace-pre-wrap font-medium">${escapeHtml(item.text)}</p>
-                    ${item.blessing ? `<div class="mt-3 pt-3 border-t border-dashed border-stone-200 text-sm text-orange-800 bg-orange-50/50 p-3 rounded-xl font-medium">✨ 宇宙光芒回應：${escapeHtml(item.blessing)}</div>` : ''}
+                    <p class="text-stone-800 text-base whitespace-pre-wrap font-medium">${window.escapeHtml(item.text)}</p>
+                    ${item.blessing ? `<div class="mt-3 pt-3 border-t border-dashed border-stone-200 text-sm text-orange-800 bg-orange-50/50 p-3 rounded-xl font-medium">✨ 宇宙光芒回應：${window.escapeHtml(item.blessing)}</div>` : ''}
                 </div>
             `).join('');
-        }
-<!-- ... upward diff matching -->
-        // Wishes functions
-        function renderWishes() {
+        };
+
+        window.addWishFromModal = function() {
+            const titleInput = document.getElementById('wish-title-input');
+            const descInput = document.getElementById('wish-desc-input');
+            const catInput = document.getElementById('wish-cat-input');
+
+            const title = titleInput ? titleInput.value.trim() : '';
+            const desc = descInput ? descInput.value.trim() : '';
+            const category = catInput ? catInput.value : '財富豐盛';
+
+            if (!title) {
+                window.showToast("請填寫願望標題！");
+                return;
+            }
+
+            if (typeof window.cloudAddWish === 'function') {
+                window.cloudAddWish(title, desc, category);
+            } else {
+                appData.wishes.unshift({ id: Date.now(), title, desc, category, achieved: false, date: new Date().toLocaleDateString() });
+                window.renderWishes();
+            }
+
+            if (titleInput) titleInput.value = '';
+            if (descInput) descInput.value = '';
+            window.showToast("🌟 願望已成功發布至宇宙願望牆！");
+        };
+
+        window.renderWishes = function() {
             const list = document.getElementById('wishes-list');
             if (!list) return;
             if (appData.wishes.length === 0) {
@@ -1035,12 +827,12 @@
                         <div class="flex justify-between items-start mb-3">
                             <span class="text-xs px-3.5 py-1.5 rounded-full font-bold ${w.achieved ? 'bg-amber-200 text-amber-900' : 'bg-stone-100 text-stone-700'}">${w.category}</span>
                             <div class="flex items-center gap-2">
-                                <button onclick="cloudToggleWish('${w.id}', ${w.achieved})" class="text-xs px-3.5 py-1.5 rounded-xl font-bold ${w.achieved ? 'bg-amber-500 text-white' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'} transition shadow-2xs">${w.achieved ? '✨ 已實現' : '顯化中'}</button>
-                                <button onclick="cloudDeleteWish('${w.id}')" class="text-stone-400 hover:text-red-500 p-1 text-sm font-bold">✕</button>
+                                <button type="button" onclick="cloudToggleWish('${w.id}', ${w.achieved})" class="text-xs px-3.5 py-1.5 rounded-xl font-bold ${w.achieved ? 'bg-amber-500 text-white' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'} transition shadow-2xs cursor-pointer">${w.achieved ? '✨ 已實現' : '顯化中'}</button>
+                                <button type="button" onclick="cloudDeleteWish('${w.id}')" class="text-stone-400 hover:text-red-500 p-1 text-sm font-bold cursor-pointer">✕</button>
                             </div>
                         </div>
-                        <h4 class="font-bold text-stone-900 text-xl mb-2 font-serif">${escapeHtml(w.title)}</h4>
-                        <p class="text-stone-700 text-base whitespace-pre-wrap font-medium leading-relaxed">${escapeHtml(w.desc)}</p>
+                        <h4 class="font-bold text-stone-900 text-xl mb-2 font-serif">${window.escapeHtml(w.title)}</h4>
+                        <p class="text-stone-700 text-base whitespace-pre-wrap font-medium leading-relaxed">${window.escapeHtml(w.desc)}</p>
                     </div>
                     <div class="mt-5 pt-3 border-t border-stone-200 text-sm text-stone-500 flex justify-between items-center font-medium">
                         <span>許願日：${w.date}</span>
@@ -1048,10 +840,32 @@
                     </div>
                 </div>
             `).join('');
-        }
-<!-- ... upward diff matching -->
-        // Gratitude functions
-        function renderGratitude() {
+        };
+
+        window.saveGratitude = function() {
+            const p1 = document.getElementById('grat-1')?.value.trim() || "";
+            const p2 = document.getElementById('grat-2')?.value.trim() || "";
+            const p3 = document.getElementById('grat-3')?.value.trim() || "";
+
+            if (!p1 && !p2 && !p3) {
+                window.showToast("請至少填寫一項感恩事項！");
+                return;
+            }
+
+            if (typeof window.cloudAddGratitude === 'function') {
+                window.cloudAddGratitude(p1, p2, p3);
+            } else {
+                appData.gratitude.unshift({ id: Date.now(), p1, p2, p3, date: new Date().toLocaleDateString() });
+                window.renderGratitude();
+            }
+
+            document.getElementById('grat-1').value = '';
+            document.getElementById('grat-2').value = '';
+            document.getElementById('grat-3').value = '';
+            window.showToast("🙏 感恩頻率已成功發送至宇宙！");
+        };
+
+        window.renderGratitude = function() {
             const list = document.getElementById('gratitude-list');
             if (!list) return;
             if (appData.gratitude.length === 0) {
@@ -1062,13 +876,352 @@
                 <div class="p-6 bg-emerald-50/40 border-2 border-emerald-200/60 rounded-2xl shadow-2xs">
                     <div class="flex justify-between items-center mb-3">
                         <span class="text-sm text-emerald-900 font-bold bg-emerald-100 px-4 py-1.5 rounded-full">${item.date}</span>
-                        <button onclick="cloudDeleteGratitude('${item.id}')" class="text-stone-400 hover:text-red-500 text-sm font-bold">刪除</button>
+                        <button type="button" onclick="cloudDeleteGratitude('${item.id}')" class="text-stone-400 hover:text-red-500 text-sm font-bold cursor-pointer">刪除</button>
                     </div>
                     <ul class="list-disc list-inside space-y-2 text-stone-800 text-base font-medium">
-                        <li>${escapeHtml(item.p1)}</li>
-                        <li>${escapeHtml(item.p2)}</li>
-                        <li>${escapeHtml(item.p3)}</li>
+                        ${item.p1 ? `<li>${window.escapeHtml(item.p1)}</li>` : ''}
+                        ${item.p2 ? `<li>${window.escapeHtml(item.p2)}</li>` : ''}
+                        ${item.p3 ? `<li>${window.escapeHtml(item.p3)}</li>` : ''}
                     </ul>
                 </div>
             `).join('');
+        };
+
+        let breathInterval = null;
+        let sessionInterval = null;
+
+        window.startBreathing = function() {
+            const circle = document.getElementById('breath-circle');
+            const textEl = document.getElementById('breath-text');
+            const secEl = document.getElementById('breath-sec');
+            const timerDisplay = document.getElementById('breath-timer-display');
+            const countdownEl = document.getElementById('breath-countdown');
+
+            if (!circle || !textEl || !secEl) return;
+
+            clearInterval(breathInterval);
+            clearInterval(sessionInterval);
+
+            if (timerDisplay) timerDisplay.classList.remove('hidden');
+
+            let sessionSeconds = 180;
+            if (countdownEl) countdownEl.innerText = "03:00";
+
+            sessionInterval = setInterval(() => {
+                sessionSeconds--;
+                const m = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
+                const s = (sessionSeconds % 60).toString().padStart(2, '0');
+                if (countdownEl) countdownEl.innerText = `${m}:${s}`;
+
+                if (sessionSeconds <= 0) {
+                    window.stopBreathing();
+                    window.showToast("🌿 3分鐘呼吸調頻圓滿完成！身心已回歸平靜高頻。");
+                }
+            }, 1000);
+
+            const phases = [
+                { name: "吸氣 (Inhale)", duration: 4, scale: "scale-125 bg-indigo-200/80 border-indigo-600" },
+                { name: "閉氣 (Hold)", duration: 7, scale: "scale-125 bg-indigo-300/80 border-indigo-700" },
+                { name: "吐氣 (Exhale)", duration: 8, scale: "scale-100 bg-indigo-50/50 border-indigo-500" }
+            ];
+
+            let phaseIdx = 0;
+
+            function runPhase() {
+                const p = phases[phaseIdx];
+                textEl.innerText = p.name;
+                circle.className = `w-56 h-56 sm:w-80 sm:h-80 rounded-full border-4 flex flex-col items-center justify-center p-4 sm:p-8 shadow-lg transition-all ease-in-out text-center relative z-10 ${p.scale}`;
+
+                let timeLeft = p.duration;
+                secEl.innerText = timeLeft;
+
+                clearInterval(breathInterval);
+                breathInterval = setInterval(() => {
+                    timeLeft--;
+                    secEl.innerText = timeLeft;
+                    if (timeLeft <= 0) {
+                        clearInterval(breathInterval);
+                        phaseIdx = (phaseIdx + 1) % phases.length;
+                        runPhase();
+                    }
+                }, 1000);
+            }
+
+            runPhase();
+            window.showToast("🌿 呼吸調頻已開始，請跟隨圓圈節奏。");
+        };
+
+        window.stopBreathing = function() {
+            clearInterval(breathInterval);
+            clearInterval(sessionInterval);
+            const circle = document.getElementById('breath-circle');
+            const textEl = document.getElementById('breath-text');
+            const secEl = document.getElementById('breath-sec');
+            const timerDisplay = document.getElementById('breath-timer-display');
+
+            if (circle) {
+                circle.className = "w-56 h-56 sm:w-80 sm:h-80 rounded-full border-4 border-indigo-500 bg-indigo-50/50 flex flex-col items-center justify-center p-4 sm:p-8 shadow-lg transition-all duration-1000 ease-in-out text-center relative z-10";
+            }
+            if (textEl) textEl.innerText = "點擊開始調頻";
+            if (secEl) secEl.innerText = "";
+            if (timerDisplay) timerDisplay.classList.add('hidden');
+            window.showToast("⏹ 呼吸調頻已停止。");
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.renderDiary();
+            window.renderWishes();
+            window.renderGratitude();
+            window.renderCheckHistory();
+            window.updateCheckPreview();
+        });
+    </script>
+
+    <!-- Firebase SDKs & Cloud Sync Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'manifestation-sanctuary-app';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "",
+            authDomain: "",
+            projectId: "",
+            storageBucket: "",
+            messagingSenderId: "",
+            appId: ""
+        };
+
+        let db, auth, userId = null;
+
+        try {
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+
+            const initAuth = async () => {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                    userId = auth.currentUser?.uid || crypto.randomUUID();
+                    console.log("Firebase authenticated. User ID:", userId);
+                    initFirestoreListeners();
+                } catch (err) {
+                    console.error("Auth error:", err);
+                    userId = crypto.randomUUID();
+                    initFirestoreListeners();
+                }
+            };
+            initAuth();
+        } catch (e) {
+            console.warn("Firebase initialization skipped, falling back to local memory:", e);
         }
+
+        window.cloudAddDiary = async function(text, blessing) {
+            if (!db || !userId) {
+                appData.diary.unshift({ id: Date.now(), date: new Date().toLocaleString(), text, blessing });
+                window.renderDiary();
+                return;
+            }
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'users', userId, 'diary'), {
+                    text,
+                    blessing,
+                    createdAt: Date.now(),
+                    dateStr: new Date().toLocaleString()
+                });
+            } catch (e) {
+                console.error("Error adding diary to cloud:", e);
+            }
+        };
+
+        window.cloudDeleteDiary = async function(docId) {
+            if (!db || !userId) {
+                appData.diary = appData.diary.filter(d => d.id !== docId);
+                window.renderDiary();
+                return;
+            }
+            try {
+                await deleteDoc(doc(db, 'artifacts', appId, 'users', userId, 'diary', docId));
+            } catch (e) {
+                console.error("Error deleting diary:", e);
+            }
+        };
+
+        window.cloudAddWish = async function(title, desc, category) {
+            if (!db || !userId) {
+                appData.wishes.unshift({ id: Date.now(), title, desc, category, achieved: false, date: new Date().toLocaleDateString() });
+                window.renderWishes();
+                return;
+            }
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'users', userId, 'wishes'), {
+                    title,
+                    desc,
+                    category,
+                    achieved: false,
+                    createdAt: Date.now(),
+                    dateStr: new Date().toLocaleDateString()
+                });
+            } catch (e) {
+                console.error("Error adding wish:", e);
+            }
+        };
+
+        window.cloudToggleWish = async function(docId, currentStatus) {
+            if (!db || !userId) {
+                const w = appData.wishes.find(item => item.id === docId);
+                if (w) { w.achieved = !w.achieved; window.renderWishes(); }
+                return;
+            }
+            try {
+                await updateDoc(doc(db, 'artifacts', appId, 'users', userId, 'wishes', docId), {
+                    achieved: !currentStatus
+                });
+            } catch (e) {
+                console.error("Error toggling wish:", e);
+            }
+        };
+
+        window.cloudDeleteWish = async function(docId) {
+            if (!db || !userId) {
+                appData.wishes = appData.wishes.filter(w => w.id !== docId);
+                window.renderWishes();
+                return;
+            }
+            try {
+                await deleteDoc(doc(db, 'artifacts', appId, 'users', userId, 'wishes', docId));
+            } catch (e) {
+                console.error("Error deleting wish:", e);
+            }
+        };
+
+        window.cloudAddGratitude = async function(p1, p2, p3) {
+            if (!db || !userId) {
+                appData.gratitude.unshift({ id: Date.now(), p1, p2, p3, date: new Date().toLocaleDateString() });
+                window.renderGratitude();
+                return;
+            }
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'users', userId, 'gratitude'), {
+                    p1, p2, p3,
+                    createdAt: Date.now(),
+                    dateStr: new Date().toLocaleDateString()
+                });
+            } catch (e) {
+                console.error("Error adding gratitude:", e);
+            }
+        };
+
+        window.cloudDeleteGratitude = async function(docId) {
+            if (!db || !userId) {
+                appData.gratitude = appData.gratitude.filter(g => g.id !== docId);
+                window.renderGratitude();
+                return;
+            }
+            try {
+                await deleteDoc(doc(db, 'artifacts', appId, 'users', userId, 'gratitude', docId));
+            } catch (e) {
+                console.error("Error deleting gratitude:", e);
+            }
+        };
+
+        window.cloudAddCheck = async function(payee, amount, purpose) {
+            if (!db || !userId) {
+                appData.checks.unshift({ id: Date.now(), payee, amount, purpose, signature: "宇宙銀行", date: new Date().toLocaleDateString() });
+                window.renderCheckHistory();
+                return;
+            }
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'users', userId, 'checks'), {
+                    payee,
+                    amount,
+                    purpose,
+                    signature: "宇宙銀行",
+                    createdAt: Date.now(),
+                    dateStr: new Date().toLocaleDateString()
+                });
+            } catch (e) {
+                console.error("Error adding check:", e);
+            }
+        };
+
+        function initFirestoreListeners() {
+            if (!db || !userId) return;
+
+            onSnapshot(collection(db, 'artifacts', appId, 'users', userId, 'diary'), (snapshot) => {
+                appData.diary = [];
+                snapshot.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    appData.diary.push({
+                        id: docSnap.id,
+                        text: data.text,
+                        blessing: data.blessing,
+                        date: data.dateStr || new Date(data.createdAt).toLocaleString(),
+                        createdAt: data.createdAt || Date.now()
+                    });
+                });
+                appData.diary.sort((a, b) => b.createdAt - a.createdAt);
+                window.renderDiary();
+            }, (err) => console.error("Diary sync error:", err));
+
+            onSnapshot(collection(db, 'artifacts', appId, 'users', userId, 'wishes'), (snapshot) => {
+                appData.wishes = [];
+                snapshot.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    appData.wishes.push({
+                        id: docSnap.id,
+                        title: data.title,
+                        desc: data.desc,
+                        category: data.category,
+                        achieved: data.achieved,
+                        date: data.dateStr || new Date(data.createdAt).toLocaleDateString(),
+                        createdAt: data.createdAt || Date.now()
+                    });
+                });
+                appData.wishes.sort((a, b) => b.createdAt - a.createdAt);
+                window.renderWishes();
+            }, (err) => console.error("Wishes sync error:", err));
+
+            onSnapshot(collection(db, 'artifacts', appId, 'users', userId, 'gratitude'), (snapshot) => {
+                appData.gratitude = [];
+                snapshot.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    appData.gratitude.push({
+                        id: docSnap.id,
+                        p1: data.p1,
+                        p2: data.p2,
+                        p3: data.p3,
+                        date: data.dateStr || new Date(data.createdAt).toLocaleDateString(),
+                        createdAt: data.createdAt || Date.now()
+                    });
+                });
+                appData.gratitude.sort((a, b) => b.createdAt - a.createdAt);
+                window.renderGratitude();
+            }, (err) => console.error("Gratitude sync error:", err));
+
+            onSnapshot(collection(db, 'artifacts', appId, 'users', userId, 'checks'), (snapshot) => {
+                appData.checks = [];
+                snapshot.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    appData.checks.push({
+                        id: docSnap.id,
+                        payee: data.payee,
+                        amount: data.amount,
+                        purpose: data.purpose,
+                        signature: "宇宙銀行",
+                        date: data.dateStr || new Date(data.createdAt).toLocaleDateString(),
+                        createdAt: data.createdAt || Date.now()
+                    });
+                });
+                appData.checks.sort((a, b) => b.createdAt - a.createdAt);
+                window.renderCheckHistory();
+            }, (err) => console.error("Checks sync error:", err));
+        }
+    </script>
+</body>
+</html>
